@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10131c"><meta name="description" content="BODY TRACK — a gentle health and habit companion">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
+<title>BODY TRACK</title>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">B</div><div><b>BODY TRACK</b><small>YOUR DAILY WELLBEING</small></div></div>
+    <nav id="sideNav">
+      <button class="nav active" data-tab="today">◷ <span data-i18n="today">Today</span></button>
+      <button class="nav" data-tab="progress">▥ <span data-i18n="progress">Progress</span></button>
+      <button class="nav" data-tab="calendar">▦ <span data-i18n="calendar">Calendar</span></button>
+      <button class="nav" data-tab="settings">⚙ <span data-i18n="settings">Settings</span></button>
+    </nav>
+    <div class="sidebar-note"><span class="pulse"></span><span data-i18n="gentle">Small steps. No pressure.</span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow" data-i18n="welcome">YOUR WELLBEING SPACE</p><h1 id="pageTitle">Today</h1></div><div class="top-actions"><button class="icon-btn" id="langBtn">العربية</button><div class="avatar">BT</div></div></header>
+    <section id="today" class="page active">
+      <div class="hello-row"><div><h2 data-i18n="takeIt">Take it one day at a time.</h2><p data-i18n="intro">A kind check-in with yourself — progress is more than numbers.</p></div><div class="date-chip" id="todayDate"></div></div>
+      <div class="grid metrics">
+        <article class="card metric"><div class="metric-head"><span data-i18n="water">Water</span><span>💧</span></div><strong id="waterValue">0 <small>/ 6 glasses</small></strong><div class="meter"><i id="waterMeter"></i></div><div class="stepper"><button data-water="-1">−</button><span data-i18n="glasses">Glasses</span><button data-water="1">+</button></div></article>
+        <article class="card metric"><div class="metric-head"><span data-i18n="steps">Steps</span><span>👟</span></div><strong id="stepsValue">0</strong><p class="muted" data-i18n="movementNote">Any movement counts.</p><div class="inline-field"><input id="stepsInput" type="number" min="0" placeholder="Add steps"><button class="small-btn" id="saveSteps" data-i18n="save">Save</button></div></article>
+        <article class="card metric"><div class="metric-head"><span data-i18n="sleep">Sleep</span><span>🌙</span></div><strong id="sleepValue">— <small data-i18n="hours">hours</small></strong><p class="muted" data-i18n="sleepNote">Rest is part of progress.</p><div class="inline-field"><input id="sleepInput" type="number" min="0" max="24" step=".5" placeholder="Hours"><button class="small-btn" id="saveSleep" data-i18n="save">Save</button></div></article>
+        <article class="card metric"><div class="metric-head"><span data-i18n="mood">Mood</span><span>☀️</span></div><strong id="moodValue" data-i18n="notSet">Not set</strong><div class="moods"><button data-mood="1" aria-label="Low">😔</button><button data-mood="2" aria-label="Okay">😐</button><button data-mood="3" aria-label="Good">🙂</button><button data-mood="4" aria-label="Great">😄</button></div></article>
+      </div>
+      <div class="grid lower">
+        <article class="card"><div class="card-title"><div><h3 data-i18n="meals">Meal check-in</h3><p data-i18n="mealsSub">Notice nourishment, without counting.</p></div><span>🥗</span></div>
+          <div class="meal-options"><label><input type="checkbox" data-meal="breakfast"><span data-i18n="breakfast">Breakfast</span></label><label><input type="checkbox" data-meal="lunch"><span data-i18n="lunch">Lunch</span></label><label><input type="checkbox" data-meal="dinner"><span data-i18n="dinner">Dinner</span></label><label><input type="checkbox" data-meal="snack"><span data-i18n="snack">Snack / something extra</span></label></div>
+          <p class="hint" data-i18n="mealHint">This is a gentle reminder, not a score. You never need to earn food.</p>
+        </article>
+        <article class="card"><div class="card-title"><div><h3 data-i18n="workout">Movement</h3><p data-i18n="workoutSub">Record what felt good for your body.</p></div><span>🏃</span></div>
+          <div class="field"><label data-i18n="activity">Activity</label><input id="activityInput" placeholder="e.g. Walk, stretching"></div>
+          <div class="field"><label data-i18n="duration">Minutes (optional)</label><input id="durationInput" type="number" min="0" placeholder="20"></div>
+          <button class="primary" id="addActivity" data-i18n="addActivity">Add activity</button><div id="activityList" class="activity-list"></div>
+        </article>
+      </div>
+      <article class="card note-card"><div class="note-icon">✦</div><div class="note-content"><h3 data-i18n="dailyNote">A note to yourself</h3><p data-i18n="dailyQuote">You deserve care on every kind of day — not only the productive ones.</p><textarea id="notesInput" rows="2" placeholder="How are you feeling today?"></textarea></div></article>
+    </section>
+    <section id="progress" class="page"><div class="section-intro"><h2 data-i18n="yourProgress">Your progress</h2><p data-i18n="progressSub">Look for patterns in care, rest, and how you feel.</p></div><div class="grid metrics"><article class="card"><p class="muted" data-i18n="loggedDays">Days checked in</p><strong id="loggedDays">0</strong></article><article class="card"><p class="muted" data-i18n="activitiesLogged">Activities logged</p><strong id="activitiesLogged">0</strong></article><article class="card"><p class="muted" data-i18n="mealCheckins">Meal check-ins</p><strong id="mealCheckins">0</strong></article></div><article class="card chart-card"><h3 data-i18n="weekAtGlance">This week at a glance</h3><div id="weekChart" class="week-chart"></div><p class="hint" data-i18n="chartHint">A check-in is simply a moment of awareness — missed days are not failures.</p></article></section>
+    <section id="calendar" class="page"><div class="section-intro"><h2 data-i18n="calendarTitle">Your calendar</h2><p data-i18n="calendarSub">A gentle view of the days you checked in.</p></div><article class="card"><div class="calendar-head"><button id="prevMonth">‹</button><h3 id="monthLabel"></h3><button id="nextMonth">›</button></div><div class="calendar-grid" id="calendarGrid"></div><p class="hint" data-i18n="calendarHint">Dots mark days with a check-in. No streaks, no pressure.</p></article></section>
+    <section id="settings" class="page"><div class="section-intro"><h2 data-i18n="settingsTitle">Settings & privacy</h2><p data-i18n="settingsSub">Your wellbeing data belongs to you.</p></div><article class="card settings-card"><div><h3 data-i18n="language">Language</h3><p class="muted" data-i18n="languageSub">Choose your preferred language.</p></div><button class="outline-btn" id="langBtn2">العربية</button><hr><div><h3 data-i18n="data">Your data</h3><p class="muted" data-i18n="dataSub">This first version stores information only in this browser on this device.</p></div><div class="data-actions"><button class="outline-btn" id="exportData" data-i18n="export">Export backup</button><label class="outline-btn import-label" for="importFile" data-i18n="import">Import backup</label><input id="importFile" type="file" accept="application/json" hidden></div><button class="danger-btn" id="clearData" data-i18n="clear">Clear my local data</button></article><p class="fine-print" data-i18n="localOnly">No account or cloud sync is configured in this build. Your entries stay in this browser.</p><p class="fine-print" data-i18n="disclaimer">BODY TRACK supports healthy habits. It does not diagnose, treat, or replace professional care.</p></section>
+    <footer>BODY TRACK <span>·</span> <span data-i18n="footer">Made for consistency, not perfection.</span></footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>
